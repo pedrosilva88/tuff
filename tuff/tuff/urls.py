@@ -2,7 +2,7 @@ from django.conf.urls import include, url
 from django.conf.urls.static import static
 from django.conf import settings
 from django.views.generic import TemplateView
-
+from twitter_user.views import twitter_login, twitter_logout, twitter_authenticated
 # Uncomment the next two lines to enable the admin:
 from django.contrib import admin
 admin.autodiscover()
@@ -14,11 +14,14 @@ urlpatterns = [
     # url(r'^$', 'footballFans.views.home', name='home'),
     # url(r'^footballFans/', include('footballFans.foo.urls')),
 
-    # Uncomment the admin/doc line below to enable admin documentation:
-    # url(r'^admin/doc/', include('django.contrib.admindocs.urls')),
-
     # Uncomment the next line to enable the admin:
+    url(r'^admin/doc/', include('django.contrib.admindocs.urls')),
     url(r'^admin/', include(admin.site.urls)),
+
+    url(r'^login/?$', twitter_login),
+    url(r'^logout/?$', twitter_logout),
+    url(r'^login/authenticated/?$', twitter_authenticated),
+
 ]
 
 

@@ -4,7 +4,6 @@
 from os.path import abspath, basename, dirname, join, normpath
 from sys import path
 
-
 ########## PATH CONFIGURATION
 # Absolute filesystem path to the Django project directory:
 DJANGO_ROOT = dirname(dirname(abspath(__file__)))
@@ -114,6 +113,7 @@ SECRET_KEY = r"d3hs%&qvh0&yr=eecgwsfwovxh^3o8+fjlu7^ww$!@o(8mmqnn"
 ALLOWED_HOSTS = ['127.0.0.1']
 ########## END SITE CONFIGURATION
 
+LOGIN_URL = '/login/'
 
 ########## FIXTURE CONFIGURATION
 # See: https://docs.djangoproject.com/en/dev/ref/settings/#std:setting-FIXTURE_DIRS
@@ -181,14 +181,19 @@ DJANGO_APPS = (
     # Useful template tags:
     # 'django.contrib.humanize',
 
-    # Admin panel and documentation:
     'django.contrib.admin',
-    # 'django.contrib.admindocs',
+    'django.contrib.admindocs',
 )
 
 # Apps specific for this project go here.
 LOCAL_APPS = (
+    'twitter_user',
 )
+
+#AUTH_PROFILE_MODULE = 'twitter_user.TwitterUser'
+TWITTER_TOKEN = ''
+TWITTER_SECRET = ''
+
 
 # See: https://docs.djangoproject.com/en/dev/ref/settings/#installed-apps
 INSTALLED_APPS = DJANGO_APPS + LOCAL_APPS
