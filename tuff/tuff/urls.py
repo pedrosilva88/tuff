@@ -15,7 +15,7 @@ urlpatterns = [
     # url(r'^footballFans/', include('footballFans.foo.urls')),
 
     # Uncomment the next line to enable the admin:
-    url(r'^admin/doc/', include('django.contrib.admindocs.urls')),
+    #url(r'^admin/doc/', include('django.contrib.admindocs.urls')),
     url(r'^admin/', include(admin.site.urls)),
     url(r'^twitter/', include('twitter_user.urls')),
 

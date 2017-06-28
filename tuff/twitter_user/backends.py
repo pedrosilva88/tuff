@@ -6,6 +6,7 @@ from twitter_user import settings
 class TwitterBackend(object):
     def authenticate(self, twitter_id=None, username=None, token=None, secret=None):
         # find or create the user
+        print "BAAJSJKBSKBSBSHJBJHSBJSHJSBHJ"
         try:
             info = TwitterUser.objects.get(id=twitter_id)
             # make sure the screen name is current

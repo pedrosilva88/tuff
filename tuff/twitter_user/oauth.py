@@ -29,14 +29,9 @@ class Token(object):
             body    = urllib.urlencode(parameters)
         )
         
-        print response['status']
-        print "\n\n"
-        print content
-
         if response['status'] != '200':
             return None;
         
-        print content
         return content
 
 class RequestToken(Token):
@@ -47,7 +42,6 @@ class RequestToken(Token):
         if callback_url is not None:
             parameters['oauth_callback'] = callback_url
         
-        print parameters
         token_content = self._get_token(REQUEST_TOKEN_URL, **parameters)
         self.token    = oauth2.Token.from_string(token_content)
     

@@ -24,7 +24,7 @@ DATABASES = {
         'USER': 'root',
         'PASSWORD': '123456',
         'HOST': 'localhost',
-        'PORT': '',
+        'PORT': '5432',
     }
 }
 ########## END DATABASE CONFIGURATION

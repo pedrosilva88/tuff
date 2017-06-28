@@ -190,10 +190,6 @@ LOCAL_APPS = (
     'twitter_user',
 )
 
-AUTHENTICATION_BACKENDS = (
-    'twitter_user.backends.TwitterBackend',
-)
-
 #AUTH_PROFILE_MODULE = 'twitter_user.TwitterUser'
 TWITTER_KEY = 'aDM4BPTEN05avVOGqrvDNivX6'
 TWITTER_SECRET = '1vzQ186M35T6GLwE5LWmbcQIizZxKXbnOATJrqvcxsTb1zwD7Q'

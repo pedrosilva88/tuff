@@ -6,6 +6,7 @@ from django.http import HttpResponseRedirect
 
 from django.contrib.auth import authenticate, login, logout
 
+from twitter_user.backends import TwitterBackend
 from twitter_user import oauth
 from twitter_user import settings
 
@@ -27,18 +28,10 @@ def twitter_login(request, redirect_field_name='next'):
         callback_url  = protocol + '://' + host + path
     except NoReverseMatch:
         callback_url  = None
-    
-    print "URL CALLBACK  -->  " + callback_url
-    print settings.KEY
-    print settings.SECRET
 
     # get a request token from Twitter
     consumer      = oauth.Consumer(settings.KEY, settings.SECRET)
-    print consumer
-
     request_token = oauth.RequestToken(consumer, callback_url=callback_url)
-    print "tentemos"
-    print request_token
     
     # save the redirect destination
     request.session['redirect_to'] = 'http://www.google.pt' #request.REQUEST.get(redirect_field_name, None)
@@ -47,6 +40,7 @@ def twitter_login(request, redirect_field_name='next'):
     return HttpResponseRedirect(request_token.authorization_url)
 
 def twitter_callback(request):
+    backend = TwitterBackend()
     oauth_token    = request.GET['oauth_token']
     oauth_verifier = request.GET['oauth_verifier']
     
@@ -55,10 +49,11 @@ def twitter_callback(request):
     access_token       = oauth.AccessToken(consumer, oauth_token, oauth_verifier)
     
     # actually log in
-    user = authenticate(twitter_id  = access_token.user_id,
-                        username    = access_token.username,
-                        token       = access_token.token,
-                        secret      = access_token.secret)
+    user = backend.authenticate(twitter_id   = access_token.user_id,
+                                       username     = access_token.username,
+                                       token  = access_token.token,
+                                       secret = access_token.secret)
+
     login(request, user)
     
     print "YUPI"
