@@ -3,6 +3,7 @@ from django.conf.urls.static import static
 from django.conf import settings
 from django.views.generic import TemplateView
 from twitter_user import *
+from twitter_feed import *
 # Uncomment the next two lines to enable the admin:
 from django.contrib import admin
 admin.autodiscover()
@@ -18,6 +19,7 @@ urlpatterns = [
     #url(r'^admin/doc/', include('django.contrib.admindocs.urls')),
     url(r'^admin/', include(admin.site.urls)),
     url(r'^twitter/', include('twitter_user.urls')),
+    url(r'^twitter/feed', include('twitter_feed.urls')),
 
 #    url(r'^login/?$', twitter_login),
 #    url(r'^logout/?$', twitter_logout),

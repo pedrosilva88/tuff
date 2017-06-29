@@ -1,0 +1,10 @@
+<div class="tweets">
+  <ul>
+    {% for tweet in tweets %}
+      <li>
+        <p>{{ tweet.content }}</p>
+        <p class="date">{{ tweet.published_at|date:"F d, Y H:m:s" }}</p>
+      </li>
+    {% endfor %}
+  </ul>
+</div>

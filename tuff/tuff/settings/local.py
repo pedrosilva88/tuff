@@ -7,7 +7,7 @@ from .base import *
 
 ########## DEBUG CONFIGURATION
 # See: https://docs.djangoproject.com/en/dev/ref/settings/#debug
-DEBUG = True
+DEBUG = False
 
 ########## EMAIL CONFIGURATION
 # See: https://docs.djangoproject.com/en/dev/ref/settings/#email-backend
@@ -53,5 +53,6 @@ MIDDLEWARE_CLASSES += (
 DEBUG_TOOLBAR_PATCH_SETTINGS = False
 
 # http://django-debug-toolbar.readthedocs.org/en/latest/installation.html
-INTERNAL_IPS = ('127.0.0.1',)
+INTERNAL_IPS = ('127.0.0.1',
+                '192.168.1.183')
 ########## END TOOLBAR CONFIGURATION

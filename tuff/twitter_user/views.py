@@ -34,7 +34,7 @@ def twitter_login(request, redirect_field_name='next'):
     request_token = oauth.RequestToken(consumer, callback_url=callback_url)
     
     # save the redirect destination
-    request.session['redirect_to'] = 'http://www.google.pt' #request.REQUEST.get(redirect_field_name, None)
+    request.session['redirect_to'] = "/twitter/feed/" #request.REQUEST.get(redirect_field_name, None)
     
     # redirect to Twitter for authorization
     return HttpResponseRedirect(request_token.authorization_url)
@@ -50,13 +50,12 @@ def twitter_callback(request):
     
     # actually log in
     user = backend.authenticate(twitter_id   = access_token.user_id,
-                                       username     = access_token.username,
-                                       token  = access_token.token,
-                                       secret = access_token.secret)
+                                username     = access_token.username,
+                                token        = access_token.token,
+                                secret       = access_token.secret)
 
     login(request, user)
     
-    print "YUPI"
     # redirect to the authenticated view
     redirect_to = request.session['redirect_to']
     if not redirect_to or not is_safe_redirect(redirect_to):

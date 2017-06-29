@@ -22,7 +22,7 @@ path.append(DJANGO_ROOT)
 
 ########## DEBUG CONFIGURATION
 # See: https://docs.djangoproject.com/en/dev/ref/settings/#debug
-DEBUG = True
+DEBUG = False
 
 ########## MANAGER CONFIGURATION
 # See: https://docs.djangoproject.com/en/dev/ref/settings/#admins
@@ -39,12 +39,12 @@ MANAGERS = ADMINS
 # See: https://docs.djangoproject.com/en/dev/ref/settings/#databases
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.',
-        'NAME': '',
-        'USER': '',
-        'PASSWORD': '',
-        'HOST': '',
-        'PORT': '',
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': 'tuff',
+        'USER': 'root',
+        'PASSWORD': '123456',
+        'HOST': 'localhost',
+        'PORT': '5432',
     }
 }
 ########## END DATABASE CONFIGURATION
@@ -52,7 +52,7 @@ DATABASES = {
 
 ########## GENERAL CONFIGURATION
 # See: https://docs.djangoproject.com/en/dev/ref/settings/#time-zone
-TIME_ZONE = 'America/Los_Angeles'
+#TIME_ZONE = 'America/Los_Angeles'
 
 # See: https://docs.djangoproject.com/en/dev/ref/settings/#language-code
 LANGUAGE_CODE = 'en-us'
@@ -67,7 +67,7 @@ USE_I18N = True
 USE_L10N = True
 
 # See: https://docs.djangoproject.com/en/dev/ref/settings/#use-tz
-USE_TZ = True
+USE_TZ = False
 ########## END GENERAL CONFIGURATION
 
 
@@ -110,7 +110,7 @@ SECRET_KEY = r"d3hs%&qvh0&yr=eecgwsfwovxh^3o8+fjlu7^ww$!@o(8mmqnn"
 ########## SITE CONFIGURATION
 # Hosts/domain names that are valid for this site
 # See https://docs.djangoproject.com/en/1.5/ref/settings/#allowed-hosts
-ALLOWED_HOSTS = ['127.0.0.1']
+ALLOWED_HOSTS = ['*']
 ########## END SITE CONFIGURATION
 
 LOGIN_URL = '/login/'
@@ -125,7 +125,9 @@ FIXTURE_DIRS = (
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [normpath(join(SITE_ROOT, 'templates'))],
+        'DIRS': [normpath(join(SITE_ROOT, 'templates')),
+                 normpath(join(SITE_ROOT, 'twitter_feed/templates/twitter_feed'))
+                ],
         'APP_DIRS': False,
         'OPTIONS': {
             'debug': DEBUG,
@@ -188,6 +190,7 @@ DJANGO_APPS = (
 # Apps specific for this project go here.
 LOCAL_APPS = (
     'twitter_user',
+    'twitter_feed'
 )
 
 #AUTH_PROFILE_MODULE = 'twitter_user.TwitterUser'
