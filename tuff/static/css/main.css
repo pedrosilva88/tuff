@@ -1,9 +1,16 @@
 body {
-  background-color: #ffefd7;
+  background-color: #C8CEAC;
 }
 .tuff-navbar {
   height: 100px;
+  background-color: #86AF96;
 }
 .tuff-mainContainer {
   padding-top: 120px;
+}
+.tuff-rightContainer {
+  background-color: #C1BB9C;
+}
+.tuff-leftContainer {
+  background-color: #C1BB9C;
 }

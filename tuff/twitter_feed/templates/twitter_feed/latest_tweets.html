@@ -1,14 +1,18 @@
 {% extends "base.html" %}
 
 {% block body %}
-<div class="container tuff-mainContainer">
-	<ul>
-		{% for tweet in tweets %}
-		<li>
-			<p>{{ tweet.content }}</p>
-			<p class="date">{{ tweet.published_at|date:"F d, Y H:m:s" }}</p>
-		</li>
-		{% endfor %}
-	</ul>
+<div class="row tuff-mainContainer">
+	<div class="col-md-2 tuff-rightContainer">.col-md-4</div>
+	<div class="col-md-8 tuff-mainContainer">	
+		<ul>
+			{% for tweet in tweets %}
+			<li>
+				<p>{{ tweet.content }}</p>
+				<p class="date">{{ tweet.published_at|date:"F d, Y H:m:s" }}</p>
+			</li>
+			{% endfor %}
+		</ul>
+	</div>
+	<div class="col-md-2 tuff-leftContainer">.col-md-4</div>
 </div>
 {% endblock %}
