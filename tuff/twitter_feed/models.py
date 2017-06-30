@@ -1,6 +1,5 @@
 from django.db import models
 
-
 class TweetManager(models.Manager):
 
     def get_latest_tweets(self, offset=0, limit=10):

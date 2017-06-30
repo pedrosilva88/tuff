@@ -1,4 +1,7 @@
-<div class="tweets">
+{% extends "base.html" %}
+
+{% block body %}
+<div class="container tweets">
   <ul>
     {% for tweet in tweets %}
       <li>
@@ -8,3 +11,4 @@
     {% endfor %}
   </ul>
 </div>
+{% endblock %}

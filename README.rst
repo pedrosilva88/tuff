@@ -1,3 +1,3 @@
 ========================
-djangoTempate
+Tuff - Twitter Buffer
 ========================

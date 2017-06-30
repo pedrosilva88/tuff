@@ -2,6 +2,7 @@
 *.py[co]
 
 tuff/assets/*
+Bootstrap/*
 
 # Packaging files:
 *.egg*

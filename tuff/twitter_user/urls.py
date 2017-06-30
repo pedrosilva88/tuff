@@ -7,4 +7,3 @@ urlpatterns = [
     url(r'^logout/?$',          twitter_logout),
 ]
 
-#    url(r'^login/?$', twitter_login),

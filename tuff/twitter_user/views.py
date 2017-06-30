@@ -13,14 +13,11 @@ from twitter_user import settings
 def is_safe_redirect(redirect_to):
     if ' ' in redirect_to:
         return False
-    # exclude http://foo.com URLs, but not paths with GET parameters that
-    # have URLs in them (/?foo=http://foo.com)
     elif '//' in redirect_to and re.match(r'[^\?]*//', redirect_to):
         return False
     return True
 
 def twitter_login(request, redirect_field_name='next'):
-    # construct the callback URL
     try:
         protocol      = 'https' if request.is_secure() else 'http'
         host          = request.get_host()
@@ -29,14 +26,11 @@ def twitter_login(request, redirect_field_name='next'):
     except NoReverseMatch:
         callback_url  = None
 
-    # get a request token from Twitter
     consumer      = oauth.Consumer(settings.KEY, settings.SECRET)
     request_token = oauth.RequestToken(consumer, callback_url=callback_url)
     
-    # save the redirect destination
-    request.session['redirect_to'] = "/twitter/feed/" #request.REQUEST.get(redirect_field_name, None)
+    request.session['redirect_to'] = "/twitter/feed"
     
-    # redirect to Twitter for authorization
     return HttpResponseRedirect(request_token.authorization_url)
 
 def twitter_callback(request):
@@ -44,11 +38,9 @@ def twitter_callback(request):
     oauth_token    = request.GET['oauth_token']
     oauth_verifier = request.GET['oauth_verifier']
     
-    # get an access token from Twitter
     consumer           = oauth.Consumer(settings.KEY, settings.SECRET)
     access_token       = oauth.AccessToken(consumer, oauth_token, oauth_verifier)
     
-    # actually log in
     user = backend.authenticate(twitter_id   = access_token.user_id,
                                 username     = access_token.username,
                                 token        = access_token.token,
@@ -56,7 +48,6 @@ def twitter_callback(request):
 
     login(request, user)
     
-    # redirect to the authenticated view
     redirect_to = request.session['redirect_to']
     if not redirect_to or not is_safe_redirect(redirect_to):
         try:
@@ -68,7 +59,7 @@ def twitter_callback(request):
 
 def twitter_logout(request, redirect_field_name='next'):
     if request.user.is_authenticated():
-        # get the redirect destination
+
         redirect_to = request.REQUEST.get(redirect_field_name, None)
         if not redirect_to or not is_safe_redirect(redirect_to):
             try:
