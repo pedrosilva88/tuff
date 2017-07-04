@@ -1,16 +1,48 @@
 body {
-  background-color: #C8CEAC;
+  background-color: #ededed;
 }
 .tuff-navbar {
-  height: 100px;
-  background-color: #86AF96;
+  position: fixed;
+  left: 0px;
+  top: 0px;
+  width: 100%;
+  height: 60px;
+  background-color: #F9F9F9;
+  border-color: rgba(0, 0, 0, 0);
 }
-.tuff-mainContainer {
-  padding-top: 120px;
+.tuff-one-edge-shadow {
+  -webkit-box-shadow: 0 1px 4px 1px #ededed;
+  -moz-box-shadow: 0 1px 4px 1px #ededed;
+  box-shadow: 0 1px 4px 1px #ededed;
 }
-.tuff-rightContainer {
-  background-color: #C1BB9C;
+.tuff-container-grid {
+  display: grid;
+  grid-template-columns: [colLeft] 20% [colCenter] auto [colRight] 20%;
+  grid-template-rows: [row1] 60px [row2] auto;
 }
-.tuff-leftContainer {
-  background-color: #C1BB9C;
+.tuff-item-top {
+  grid-column-start: colLeft;
+  grid-column-end: colRight;
+  grid-row-start: row1;
+  grid-row-end: row1;
+}
+.tuff-item-left {
+  background-color: #F9F9F9;
+  grid-column-start: colLeft;
+  grid-column-end: colLeft;
+  grid-row-start: row2;
+  grid-row-end: row2;
+}
+.tuff-item-center {
+  grid-column-start: colCenter;
+  grid-column-end: colCenter;
+  grid-row-start: row2;
+  grid-row-end: row2;
+}
+.tuff-item-right {
+  background-color: #F9F9F9;
+  grid-column-start: colRight;
+  grid-column-end: colRight;
+  grid-row-start: row2;
+  grid-row-end: row2;
 }

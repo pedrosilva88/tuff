@@ -16,11 +16,16 @@
   </head>
 
   <body class="body">
-    <div class="navbar navbar-inverse navbar-fixed-top tuff-navbar"></div>
-
-    {% block body %}
-    {% endblock %}
-
+    <div class="tuff-navbar tuff-one-edge-shadow tuff-container-grid">
+      <div>
+          <img src="{% static 'apple-touch-icon.png' %}" alt="Smiley face" align="middle" height="40px" width="74px">
+      </div>
+    </div>
+    <div class="tuff-container-grid">
+      <div class="tuff-item-top"></div>
+      {% block body %}
+      {% endblock %}
+    </div>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <script src="{% static 'libs/bootstrap/js/bootstrap.min.js' %}"></script>
 

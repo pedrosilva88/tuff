@@ -1,9 +1,8 @@
 {% extends "base.html" %}
 
 {% block body %}
-<div class="row tuff-mainContainer">
-	<div class="col-md-2 tuff-rightContainer">.col-md-4</div>
-	<div class="col-md-8 tuff-mainContainer">	
+	<div class="tuff-item-left">.col-md-4</div>
+	<div class="tuff-item-center">	
 		<ul>
 			{% for tweet in tweets %}
 			<li>
@@ -13,6 +12,5 @@
 			{% endfor %}
 		</ul>
 	</div>
-	<div class="col-md-2 tuff-leftContainer">.col-md-4</div>
-</div>
+	<div class="tuff-item-right">.col-md-4</div>
 {% endblock %}
